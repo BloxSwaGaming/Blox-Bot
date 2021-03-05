@@ -7,6 +7,3 @@ If you are interested in collaborating or contributing, join my Discord server (
 
 Try out Blox Bot here:
 https://discord.gg/cm4B5tUTbA
-
-Join my Discord server for contributing\collabing:
-https://discord.gg/3QSF6ebZ3r
