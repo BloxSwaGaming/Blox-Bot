@@ -1,9 +1,6 @@
 Hello There! 
 
-This is the official source code for Blox Bot (which is written entirely in discord.js). 
-Unfortunately, the bot is not available for other Discord servers it is only available in the server linked at the end.
+This is the official source code for Blox Bot (which is written entirely in discord.js). If you use any of the commands or code from my code, please give me credits for it.
 
-If you are interested in collaborating or contributing, join my Discord server (also linked at the end), and we can discuss in DM's.
-
-Try out Blox Bot here:
-https://discord.gg/cm4B5tUTbA
+Invite Blox Bot here:
+https://discord.com/api/oauth2/authorize?client_id=774477854401626122&permissions=8&scope=bot
