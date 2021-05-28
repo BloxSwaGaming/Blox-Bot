@@ -4,7 +4,6 @@ const client = new Discord.Client({ ws: { intents: Discord.Intents.ALL } });
 const { prefix, token } = require("./Info.json");
 const weather = require('weather-js');
 const fs = require('fs');
-const Canvas = require('canvas');
 const Enmap = require('enmap');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -12,61 +11,6 @@ for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 }
-
-//Join
-client.on('guildMemberAdd', async (member) => {
-    const channel = member.guild.channels.cache.find(r => r.name === 'welcome');
-
-    const canvas = Canvas.createCanvas(700, 250);
-    const ctx = canvas.getContext('2d');
-
-    const background = await Canvas.loadImage('./r.jpg');
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-    ctx.strokeStyle = '#3dcf19';
-    ctx.strokeRect(2, 2, 695, 247);
-
-    ctx.font = '28px sans-serif';
-    ctx.fillStyle = '#1866db';
-    ctx.fillText('Welcome,', canvas.width / 2.5, 110);
-
-    ctx.fillStyle = '#1866db';
-    ctx.fillText(`${member.user.tag}!`, canvas.width / 2.5, 160);
-
-    const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-    ctx.drawImage(avatar, 100, 50, 150, 150);
-
-    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'img.png');
-
-    channel.send(attachment)
-})
-//Leave
-client.on('guildMemberRemove', async member => {
-    const channel = member.guild.channels.cache.find(r => r.name === 'goodbye');
-
-    const canvas = Canvas.createCanvas(700, 250);
-    const ctx = canvas.getContext('2d');
-
-    const background = await Canvas.loadImage('./r.jpg');
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-    ctx.strokeStyle = '#3dcf19';
-    ctx.strokeRect(2, 2, 695, 247);
-
-    ctx.font = '28px sans-serif';
-    ctx.fillStyle = '#1866db';
-    ctx.fillText('Goodbye,', canvas.width / 2.5, 110);
-
-    ctx.fillStyle = '#1866db';
-    ctx.fillText(`${member.user.tag}`, canvas.width / 2.5, 160);
-
-    const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-    ctx.drawImage(avatar, 100, 50, 150, 150);
-
-    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'img.png');
-
-    channel.send(attachment)
-})
 
 //Ready Event
 client.on('ready', () => {
