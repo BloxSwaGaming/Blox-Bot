@@ -7,6 +7,5 @@ https://dsc.gg/blox-bot
 >
 >>**Join the support server!**
 https://dsc.gg/blox-support
->
 >>**Check out the new dashboard for Blox Bot!**
 https://blox-bot.glitch.me
