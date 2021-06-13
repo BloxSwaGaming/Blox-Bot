@@ -5,7 +5,7 @@ module.exports = {
         const prefix = '*';
 
         //Kick
-        if (!message.member.hasPermission("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have the permission to use that command!")
+        if (!message.member.hasPermission("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have the permission to use that command!\n**Required Permission:** `KICK_MEMBERS` / `ADMINISTRATOR`")
         let user = message.mentions.users.first();
         let member = message.guild.member(user);
         const args = message.content.slice(prefix.length).trim().split(' ');

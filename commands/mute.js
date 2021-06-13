@@ -7,9 +7,13 @@ module.exports = {
      * @param {Message} message
      */
     run: async (client, message, args) => {
-        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You don\'t have the permission to use that command!');
+        if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You don\'t have the permission to use that command!\n**Required Permission:** `MANAGE_MESSAGES` / `ADMINISTRATOR`');
         const Member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
-        if (!Member) return message.channel.send('Member not found!')
+        const time = args[2]
+
+        if (Member === client) return message.reply("You cannot mute me!");
+        if (!Member) return message.channel.send('Member is not found.')
+        if (!time) return message.channel.send('Please specify a time.')
         const role = message.guild.roles.cache.find(role => role.name.toLowerCase() === 'muted')
         if (!role) {
             try {
@@ -18,13 +22,18 @@ module.exports = {
                 let muterole = await message.guild.roles.create({
                     data: {
                         name: 'muted',
-                        permissions: []
+                        permissions: [none]
                     }
                 });
                 message.guild.channels.cache.filter(c => c.type === 'text').forEach(async (channel, id) => {
                     await channel.createOverwrite(muterole, {
                         SEND_MESSAGES: false,
-                        ADD_REACTIONS: false
+                        ADD_REACTIONS: false,
+                        VIEW_CHANNEL: false,
+                        READ_MESSAGE_HISTORY: false,
+                        CONNECT: false,
+                        USE_VAD: false,
+                        STREAM: false
                     })
                 });
                 message.channel.send('**Successfully** created muted role!')
@@ -36,5 +45,14 @@ module.exports = {
         if (Member.roles.cache.has(role2.id)) return message.channel.send(`${Member.displayName} is already muted.`)
         await Member.roles.add(role2)
         message.channel.send(`**Successfully** muted ${Member.displayName}!`)
+
+        if(time === 'p'){
+                await Member.roles.add(role2)
+        } else {
+        setTimeout(async () => {
+                await Member.roles.remove(role2)
+                message.channel.send(`**${Member.displayName}** has been unmuted!`)
+        }, ms(time))
+        }
     }
 }

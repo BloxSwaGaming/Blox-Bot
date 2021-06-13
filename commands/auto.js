@@ -3,8 +3,7 @@ module.exports = {
     execute(message){
         
         const Discord = require('discord.js');
-        const words = [''];
-        //Put the bad words here
+        const words = ['fuck', 'shit', 'asshole', 'motherfucker', 'bitch', 'frick', 'dick', 'madarchod'];
         
         var msg = message.content;
 

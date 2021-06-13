@@ -18,6 +18,10 @@ module.exports = {
                 name: 'Memes',
                 value: '`meme`\n',
                 inline: true
+            },{
+                name: 'Funny',
+                value: '`funny`\n',
+                inline: true
             },
             {
                 name: 'Roll a dice',
@@ -44,8 +48,8 @@ module.exports = {
                 value: "` add | sub | mult | div | mod | pow | root `"
             },
             {
-                name: '**Prefix:**',
-                value: '** * **'
+                name: '**Invite me:**',
+                value: 'https://dsc.gg/blox-bot'
             })
             .setTimestamp();
 

@@ -11,12 +11,13 @@ module.exports = {
             .setDescription([
                 "Here are some commands:\n\n",
                 "**Moderation**",
-                "`*mod`",
+                "`*help mod`",
                 "**--------------------------------------**",
                 "**Fun**",
-                "`*fun`",
+                "`*help fun`",
                 "**--------------------------------------**\n",
-                '**Prefix:** *'
+                "**Prefix: ***",
+                '**Invite me:** https://dsc.gg/blox-bot'
             ])
             .setFooter("Blox Bot")
             .setTimestamp();

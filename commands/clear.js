@@ -16,7 +16,7 @@ module.exports = {
 			.setColor('#43ff40')
 			.setDescription(`**Successfully** cleared ${messagesDeleted} messages!`);
 
-		if (!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return message.channel.send("You don't have the permission to use that command!");
+		if (!message.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return message.channel.send("You don't have the permission to use that command!\n**Required Permission:** `MANAGE_MESSAGES` / `ADMINISTRATOR`");
 		message.channel.bulkDelete(messagesDeleted).then(() => message.channel.send(embed)).then(message => message.delete({timeout: 2500}));
 	},
 }

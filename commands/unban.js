@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'unban',
 	execute(client, message, args){
-		if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("You don't have the permission to use that command!").then(m => m.delete({ timeout: 5000 }));
+		if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("You don't have the permission to use that command!\n**Required Permission:** `BAN_MEMBERS` / `ADMINISTRATOR`").then(m => m.delete({ timeout: 5000 }));
 
         if (!args[1]) return message.channel.send('**ERROR!** User not found!').then(m => m.delete({ timeout: 5000 }));
 
@@ -13,8 +13,6 @@ module.exports = {
         async function unban() {
 
             let toBan = await client.users.fetch(args[1]);
-
-            if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You don't have the permission to use that command!");
 
             message.guild.members.unban(toBan)
 

@@ -4,6 +4,7 @@ module.exports = {
 		const Discord = require('discord.js');
 		const messageArray = message.content.split(' ');
 		const args = messageArray.slice(1);
+                if(!message.member.hasPermission('MANAGE_CHANNEL')) return message.channel.send("You don't have the permission to use that commands!\n**Required Permission:** `MANAGE_CHANNEL` / `ADMINISTRATOR`");
 
 		const embed = new Discord.MessageEmbed()
 			.setColor('RANDOM')

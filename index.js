@@ -1,9 +1,19 @@
+//Uptime Robot
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Done!'));
+
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
+
+//Bot
 const Discord = require("discord.js");
 const got = require("got");
 const client = new Discord.Client({ ws: { intents: Discord.Intents.ALL } });
-const { prefix, token } = require("./Info.json");
 const weather = require('weather-js');
 const fs = require('fs');
+const Canvas = require('canvas');
 const Enmap = require('enmap');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -11,13 +21,18 @@ for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
 }
+const prefix = '*';
+const token = process.env.TOKEN;
 
-//Ready Event
 client.on('ready', () => {
     console.log('Blox Bot is now online!');
     //Bot Status
     client.user.setStatus('online');
     client.user.setActivity('*help | Blox Bot', { type: 'LISTENING' });
+    /* setInterval(() => {
+         var ch1 = client.channels.cache.get('775582758730727457');
+        ch1.send('WASSUP BOI!? I\'m spamming, stop me if you can!');
+        }, 1000); */
 });
 
 client.on('message', async message => {
@@ -25,13 +40,17 @@ client.on('message', async message => {
     if (message.content === `${prefix}help`) {
         client.commands.get('help').execute(message);
     };
-    //*mod 
-    if (message.content === `${prefix}mod`) {
+    //*help mod 
+    if (message.content === `${prefix}help mod`) {
         client.commands.get('moderation').execute(message);
     };
-    //*fun
-    if (message.content === `${prefix}fun`) {
+    //*help fun
+    if (message.content === `${prefix}help fun`) {
         client.commands.get('fun').execute(message);
+    };
+    //*funny
+    if (message.content === `${prefix}funny`) {
+        client.commands.get('funny').execute(message);
     };
     //Ban
     if (message.content.startsWith(`${prefix}ban`)) {
@@ -49,12 +68,6 @@ client.on('message', async message => {
     //Mute
     if (message.content.startsWith(`${prefix}mute`)) {
         let command = client.commands.get('mute');
-        const args = message.content.slice(prefix.length).split(" ");
-        if (command) command.run(client, message, args);
-    };
-    //Tempmute
-    if (message.content.startsWith(`${prefix}tmute`)) {
-        let command = client.commands.get('tmute');
         const args = message.content.slice(prefix.length).split(" ");
         if (command) command.run(client, message, args);
     };
@@ -141,7 +154,7 @@ client.on('message', async message => {
         client.commands.get('slowmode').execute(client, message);
     }
     //Nickname
-    if (message.content.startsWith(`${prefix}nickname`)) {
+    if (message.content.startsWith(`${prefix}name`)) {
         const args = message.content.slice(prefix.length).split(" ");
         client.commands.get('nickname').execute(client, message, args);
     }
@@ -149,6 +162,11 @@ client.on('message', async message => {
     if (message.content.startsWith(`${prefix}clear`)) {
         const args = message.content.slice(prefix.length).split(" ");
         client.commands.get('clear').execute(client, message, args);
+    }
+    //Clear Nickname
+    if (message.content.startsWith(`${prefix}nickClear`)) {
+        const args = message.content.slice(prefix.length).split(" ");
+        client.commands.get('nickClear').execute(client, message, args);
     }
 });
 

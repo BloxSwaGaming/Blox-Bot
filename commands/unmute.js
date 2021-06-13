@@ -6,6 +6,7 @@ module.exports = {
      * @param {Message} message
      */
     run: async (client, message, args) => {
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send("You don't have the permission to use that command!\n**Required Permission:** `MANAGE_MESSAGES` / `ADMINISTRATOR`");
         const Member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         const role = message.guild.roles.cache.find(r => r.name.toLowerCase() === 'muted');
 
