@@ -6,4 +6,4 @@ This is the official source code for Blox Bot (which is written entirely in disc
 
 >**[Join the support server!](https://dsc.gg/blox-support)**
 
->**[Check out the new dashboard for Blox Bot!](https://blox-bot.glitch.me_target="blank")**
+>**[Check out the new dashboard for Blox Bot!](https://blox-bot.glitch.me)**
