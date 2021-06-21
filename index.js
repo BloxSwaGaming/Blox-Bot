@@ -1,12 +1,3 @@
-//Uptime Robot
-const express = require('express');
-const app = express();
-const port = 3000;
-
-app.get('/', (req, res) => res.send('Done!'));
-
-app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
-
 //Bot
 const Discord = require("discord.js");
 const got = require("got");
@@ -22,7 +13,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 const prefix = '*';
-const token = process.env['TOKEN'];
+const token = 'Nzc0NDc3ODU0NDAxNjI2MTIy.X6YWtQ._KqXb5WzX8T84DFVQ_3e2Rzm0Nw';
 
 client.on('ready', () => {
     console.log('Blox Bot is now online!');

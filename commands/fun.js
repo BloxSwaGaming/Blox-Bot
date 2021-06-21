@@ -13,51 +13,43 @@ module.exports = {
                 name: 'Info about of a user',
                 value: '`info @user`\n',
                 inline: true
-            },
-            {
+            }, {
                 name: 'Memes',
                 value: '`meme`\n',
                 inline: true
-            },{
+            }, {
                 name: 'Funny',
                 value: '`funny`\n',
                 inline: true
-            },
-            {
+            }, {
                 name: 'Roll a dice',
                 value: '`dice`\n',
                 inline: true
-            },
-            {
+            }, {
                 name: 'Flip a coin',
                 value: '`flip`\n',
                 inline: true
-            },
-            {
+            }, {
                 name: 'Calculates',
                 value: '`math`',
                 inline: true
-            },
-            {
-                name: 'Weather Info',
-                value: '`weather city/state`',
-                inline: true
-            },
-            {
+            }, {
                 name: 'Dad Joke',
                 value: '`dadjoke`',
                 inline: true
-            },
-            {
+            }, {
                 name: '8ball',
                 value: '`8ball`',
+                inline: true
+            }, {
+                name: 'Weather',
+                value: '`weather city/state`',
                 inline: true
             })
             .addFields({
                 name: '**Operators:**',
                 value: "` add | sub | mult | div | mod | pow | root `"
-            },
-            {
+            }, {
                 name: '**Invite me:**',
                 value: 'https://dsc.gg/blox-bot'
             })

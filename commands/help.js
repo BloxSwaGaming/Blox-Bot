@@ -20,7 +20,8 @@ module.exports = {
                 "`*help util`",
                 "**--------------------------------------**\n",
                 "**Prefix: ***",
-                '**Invite me:** https://dsc.gg/blox-bot'
+                '**Invite me:** https://dsc.gg/blox-bot',
+                '**Support Server:** https://dsc.gg/blox-support'
             ])
             .setFooter("Blox Bot")
             .setTimestamp();

@@ -3,9 +3,12 @@ module.exports = {
     execute(message, client) {
         const Discord = require('discord.js');
         const prefix = '*';
+        const embed = new Discord.MessageEmbed()
+            .setColor('#fa2525')
+            .setDescription("You don't have the permission to use that command!\n**Required Permission:** `KICK_MEMBERS` / `ADMINISTRATOR`");
 
         //Kick
-        if (!message.member.hasPermission("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You don't have the permission to use that command!\n**Required Permission:** `KICK_MEMBERS` / `ADMINISTRATOR`")
+        if (!message.member.hasPermission("KICK_MEMBERS") || !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(embed)
         let user = message.mentions.users.first();
         let member = message.guild.member(user);
         const args = message.content.slice(prefix.length).trim().split(' ');

@@ -40,7 +40,7 @@ module.exports = {
                 inline: true
             })
             .addFields({
-                name: '**Change slowmode**',
+                name: '**Changes the slowmode**',
                 value: '`slowmode <1-1800>`',
                 inline: true
             })
