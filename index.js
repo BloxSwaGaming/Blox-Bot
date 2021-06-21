@@ -13,7 +13,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 const prefix = '*';
-const token = 'Nzc0NDc3ODU0NDAxNjI2MTIy.X6YWtQ._KqXb5WzX8T84DFVQ_3e2Rzm0Nw';
+const token = 'YourBotToken';
 
 client.on('ready', () => {
     console.log('Blox Bot is now online!');
