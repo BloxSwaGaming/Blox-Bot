@@ -1,4 +1,4 @@
-This is the official source code for Blox Bot (which is written entirely in discord.js). If you use any of the commands or code from my code it would be great if you credited me!
+This is the official source code for Blox Bot (which is written entirely in discord.js). I would really appreciate it if you credited me for using any of this code.
 
 >**[Invite Blox Bot!](https://dsc.gg/blox-bot)**
 
