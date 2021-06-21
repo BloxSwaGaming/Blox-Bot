@@ -42,6 +42,16 @@ module.exports = {
                 name: 'Weather Info',
                 value: '`weather city/state`',
                 inline: true
+            },
+            {
+                name: 'Dad Joke',
+                value: '`dadjoke`',
+                inline: true
+            },
+            {
+                name: '8ball',
+                value: '`8ball`',
+                inline: true
             })
             .addFields({
                 name: '**Operators:**',

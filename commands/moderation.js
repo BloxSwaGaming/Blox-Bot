@@ -40,29 +40,9 @@ module.exports = {
                 inline: true
             })
             .addFields({
-                name: '**Changes the slowmode**',
+                name: '**Change slowmode**',
                 value: '`slowmode <1-1800>`',
                 inline: true
-            })
-            .addFields({
-                name: '**Mutes a user**',
-                value: '`mute @user`',
-                inline: true
-            })
-            .addFields({
-                name: '**Unmutes a muted user**',
-                value: '`unmuted @user`',
-                inline: true
-            })
-            .addFields({
-                name: '**Change the nickname of a user**',
-                value: '`name @user newNickname`',
-                inline: true
-            })
-            .addFields({
-                    name: '**Reset the nickname of a user**',
-                    value: '`nickClear @user`',
-                    inline: true
             })
             .addFields({
                 name: '**Timecodes for mute:**',

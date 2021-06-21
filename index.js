@@ -13,8 +13,8 @@ const got = require("got");
 const client = new Discord.Client({ ws: { intents: Discord.Intents.ALL } });
 const weather = require('weather-js');
 const fs = require('fs');
-const Canvas = require('canvas');
 const Enmap = require('enmap');
+const db = require('quick.db');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
@@ -22,17 +22,13 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 const prefix = '*';
-const token = process.env.TOKEN;
+const token = process.env['TOKEN'];
 
 client.on('ready', () => {
     console.log('Blox Bot is now online!');
     //Bot Status
     client.user.setStatus('online');
     client.user.setActivity('*help | Blox Bot', { type: 'LISTENING' });
-    /* setInterval(() => {
-         var ch1 = client.channels.cache.get('775582758730727457');
-        ch1.send('WASSUP BOI!? I\'m spamming, stop me if you can!');
-        }, 1000); */
 });
 
 client.on('message', async message => {
@@ -47,6 +43,10 @@ client.on('message', async message => {
     //*help fun
     if (message.content === `${prefix}help fun`) {
         client.commands.get('fun').execute(message);
+    };
+    //*help util
+    if (message.content === `${prefix}help util`) {
+        client.commands.get('util').execute(client, message);
     };
     //*funny
     if (message.content === `${prefix}funny`) {
@@ -168,6 +168,27 @@ client.on('message', async message => {
         const args = message.content.slice(prefix.length).split(" ");
         client.commands.get('nickClear').execute(client, message, args);
     }
+    //AFK
+    if (message.content.startsWith(`${prefix}afk`)) {
+        const args = message.content.slice(prefix.length).split(" ");
+        client.commands.get('afk').execute(client, message, args, db, Map);
+    }
+    //Roast
+    if (message.content.startsWith(`${prefix}roast`)) {
+        const args = message.content.slice(prefix.length).split(" ");
+        client.commands.get('roast').execute(client, message, args);
+    }
+    //Dad Joke
+    if (message.content.startsWith(`${prefix}dadjoke`)) {
+        const args = message.content.slice(prefix.length).split(" ");
+        client.commands.get('dadjoke').execute(client, message, args);
+    }
+    //8ball
+    if (message.content.startsWith(`${prefix}8ball`)) {
+        const args = message.content.slice(prefix.length).split(" ");
+        client.commands.get('8ball').execute(client, message, args);
+    }
+
 });
 
 client.login(token);

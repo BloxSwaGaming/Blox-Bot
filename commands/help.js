@@ -15,13 +15,16 @@ module.exports = {
                 "**--------------------------------------**",
                 "**Fun**",
                 "`*help fun`",
+                "**--------------------------------------**",
+                "**Utility**",
+                "`*help util`",
                 "**--------------------------------------**\n",
                 "**Prefix: ***",
                 '**Invite me:** https://dsc.gg/blox-bot'
             ])
             .setFooter("Blox Bot")
             .setTimestamp();
-        
+
         message.delete();
         message.channel.send(helpList);
     }

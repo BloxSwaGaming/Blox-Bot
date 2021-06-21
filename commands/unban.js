@@ -2,11 +2,18 @@ const Discord = require('discord.js')
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-	name: 'unban',
-	execute(client, message, args){
-		if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("You don't have the permission to use that command!\n**Required Permission:** `BAN_MEMBERS` / `ADMINISTRATOR`").then(m => m.delete({ timeout: 5000 }));
+    name: 'unban',
+    execute(client, message, args) {
+        const embed = new Discord.MessageEmbed()
+            .setColor('#fa2525')
+            .setDescription("You don't have the permission to use that command!\n**Required Permission:** `BAN_MEMBERS` / `ADMINISTRATOR`");
+        const embed2 = new Discord.MessageEmbed()
+            .setColor('#fa2525')
+            .setDescription('**ERROR!** User not found!');
 
-        if (!args[1]) return message.channel.send('**ERROR!** User not found!').then(m => m.delete({ timeout: 5000 }));
+        if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(embed).then(m => m.delete({ timeout: 5000 }));
+
+        if (!args[1]) return message.channel.send(embed2).then(m => m.delete({ timeout: 5000 }));
 
         let member;
 
@@ -16,24 +23,22 @@ module.exports = {
 
             message.guild.members.unban(toBan)
 
-            const embed = new Discord.MessageEmbed()
+            const embed3 = new Discord.MessageEmbed()
                 .setTitle(`Unbanned ${toBan.tag}`)
                 .addFields({
                     name: '**Action:**',
                     value: 'Unban'
-                },
-                {
+                }, {
                     name: '**Moderator:**',
                     value: `${message.author.tag}`
-                },
-                {
+                }, {
                     name: '**Status:**',
                     value: '**Successful**'
                 })
 
             message.channel.send(embed);
-        }//.catch(err => console.log(err));
+        }
 
         unban();
-	},
+    },
 }
